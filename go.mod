@@ -1,6 +1,6 @@
 module github.com/xesina/golang-echo-realworld-example-app
 
-go 1.18
+go 1.22
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751

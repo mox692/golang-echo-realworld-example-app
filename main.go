@@ -1,6 +1,10 @@
 package main
 
 import (
+	"log"
+	"os"
+	"runtime/trace"
+
 	"github.com/xesina/golang-echo-realworld-example-app/db"
 	"github.com/xesina/golang-echo-realworld-example-app/handler"
 	"github.com/xesina/golang-echo-realworld-example-app/router"
@@ -27,6 +31,14 @@ import (
 // @name Authorization
 
 func main() {
+	f, err := os.Create("trace.out")
+	if err != nil {
+		log.Fatal(err)
+	}
+	trace.Start(f)
+
+	defer trace.Stop()
+
 	r := router.New()
 
 	r.GET("/swagger/*", echoSwagger.WrapHandler)
